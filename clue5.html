@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>clue:5</title>
+  <style>
+    /* Style for the hint button */
+    h1{
+      font-size: 40PX;
+      margin-left:100px;
+      margin-top:80px;
+      color:rgb(72, 87, 9)
+    }
+    #hintButton {
+      margin-top: 50px;
+      margin-left: 100px;
+    }
+    #hint-text {
+      display: none;
+    }
+    /* Style for the answer options */
+    .option {
+      display: inline-block;
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+    .option img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    p{
+      margin-left: 100px;
+      font-size: 20px;
+    }
+    audio{
+      margin-left: 40px;
+      margin-top: 100px;
+    }
+    option{
+
+      margin-top: 50px;  
+    }
+  </style>
+</head>
+<body>
+  <h1>CLUE:5</h1>
+  <div id="question">
+    <p>Listen the audio and find the garden where you find your next clue to reach your girlfriend</p>
+    <audio controls>
+      <source src="hint.mp3" type="audio/mp3">
+    </audio>
+    <div class="option"  onclick="checkAnswer('anr')">
+      <img src="anr.jpeg" alt="France Flag">
+    </div>
+    <div class="option" onclick="checkAnswer('balayya')">
+      <img src="balayya.jpeg" alt="Spain Flag">
+    </div>
+    <div class="option" onclick="checkAnswer('ntr')">
+      <img src="ntr.jpeg" alt="Italy Flag">
+    </div>
+    <div class="option" onclick="checkAnswer('krishna')">
+      <img src="krishna.jpeg" alt="Germany Flag">
+    </div>
+  </div>
+  <button id="hintButton" onclick="showHint()">Hint</button>
+  
+  <p id="result"></p>
+  <!-- Description -->
+  <p id="hintDescription" style="display: none;">The garden name starts with name of the fmaous star</p>
+
+  
+
+  <script>
+    // The correct answer for the current question
+    var correctAnswer = "ntr";
+    // The number of attempts the user has made
+    var attempts = 0;
+    // Whether the user has used the hint button
+    var usedHint = false;
+
+    function checkAnswer(answer) {
+      // Check if the user's answer is correct
+      if (answer === correctAnswer) {
+        document.getElementById("result").innerHTML = "Correct!";
+        // Redirect to the next question after a short delay
+        setTimeout(function() {
+          window.location.href = "river6.html";
+        }, 1000);
+      } else {
+        // Increment the number of attempts
+        attempts++;
+
+        if (attempts === 1) {
+          document.getElementById("result").innerHTML = "Incorrect. Try again.";
+        } else {
+          document.getElementById("result").innerHTML = "Incorrect. One more attempt.";
+        }
+        if (attempts >= 2) {
+          document.getElementById("result").innerHTML = "Incorrect. Game over.";
+          // Redirect to the game over page after a short delay
+          setTimeout(function() {
+            window.location.href = "final.html";
+          }, 1000);
+        }
+      }
+    }
+
+    function showHint() {
+      if (!usedHint) {
+        document.getElementById("hintButton").style.display = "block";
+        usedHint = true;
+      }
+    }
+    /* JavaScript*/
+    // Add event listener to hint button
+    document.querySelector('#hintButton').addEventListener('click', function() {
+        // Show audio player
+        
+        document.querySelector('#hintDescription').style.display = 'block';
+
+    });
+    </script>
+  
+</body>
+</html>
