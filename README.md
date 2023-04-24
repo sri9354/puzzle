@@ -9,5 +9,3 @@
 ![krishna](https://user-images.githubusercontent.com/116734016/233983854-64097d36-d9a3-4bf5-b081-92bde21ff600.jpeg)
 
 
-Uploading sr.mp4…
-
