@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example</title>
+    <h1>CLUE:6</h1>
+    <style>
+      /* Add your CSS styles here */
+      img {
+        width: 500px;
+        height:450px;
+        margin-left: 20px;
+      }
+      #hintButton{
+        margin-top: 20px;
+        margin-left: 300px;
+        size: 50px;
+      }
+      p {
+      line-height: 1.2;
+      font-size: 20PX;
+      margin-left:300px
+    }
+      video {
+        width: 40%;
+        height: 35%;
+        margin-left: 300px;
+        }   
+        h1{
+      font-size: 40PX;
+      margin-left:300px;
+      margin-top:80px;
+      color:rgb(76, 6, 95)
+    }
+    input{
+      margin-left:300px;
+      font-size: 100%;
+      margin-top: 20px;
+      
+    }
+    </style>
+  </head>
+  <body>
+    <!-- Images -->
+    <video width="320" height="240" controls>
+        <source src="sr.mp4" type="video/mp4">
+        
+        
+    </video>
+    <p>Its the place our girllfriend is, Find your girlfriend and cool her with a sweet gift </p>
+
+    <!-- Options -->
+    <form>
+      <input type="radio" name="option" value="option1"> MUSI RIVER<br>
+      <input type="radio" name="option" value="option2"> KRISHNA RIVER<br>
+      <input type="radio" name="option" value="option3"> GODAVARI<br>
+      <input type="radio" name="option" value="option4"> DURGAM CHERUVU<br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <!-- Correct Answer -->
+    <p id="correctAnswer" style="display: none;">Correct answer!</p>
+
+    <!-- Hint button -->
+    <button id="hintButton" disabled>Show Hint</button>
+
+    <!-- Hint -->
+    <p id="hint" style="display: none;">It starts with the name of goddess and also called Secret river</p>
+
+    <!-- Wrong Answer -->
+    <p id="wrongAnswer" style="display: none;">Wrong answer.</p>
+
+    <!-- Game Over -->
+    <p id="gameOver" style="display: none;">Game over.</p>
+
+    <!-- JavaScript -->
+    <script>
+      let attempts = 0;
+      
+      // Add event listener to form submit
+      document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Increment attempts
+        attempts++;
+        // Get selected option
+        let selectedOption = document.querySelector('input[name=option]:checked').value;
+        // Check if selected option is correct
+        if (selectedOption === 'option4') {
+          // Show correct answer message
+          document.querySelector('#correctAnswer').style.display = 'block';
+          // Redirect to next page after a short delay
+          setTimeout(function() {
+            window.location.href = 'finalpage1.html';
+          }, 1000);
+        } else if (attempts === 1) {
+          // Show wrong answer message
+          document.querySelector('#wrongAnswer').style.display = 'block';
+          // Enable hint button after one attempt
+          document.querySelector('#hintButton').disabled = false;
+        } else {
+          // Show game over message
+          document.querySelector('#wrongAnswer').style.display = 'block';
+          // Redirect to next page after a short delay
+          setTimeout(function() {
+            window.location.href = 'finalpage2.html';
+          }, 1000);
+        }
+      });   
+      
+      // Add event listener to hint button
+      document.querySelector('#hintButton').addEventListener('click', function() {
+        // Hide wrong answer message
+        document.querySelector('#wrongAnswer').style.display = 'none';
+        // Show hint
+        document.querySelector('#hint').style.display = 'block';
+      });
+    </script>
+  </body>
+</html>

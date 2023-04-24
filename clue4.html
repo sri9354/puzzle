@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>clue:4</title>
+</head>
+<body>
+    <style>
+        h1{
+      font-size: 40PX;
+      margin-left:300px;
+      margin-top:80px;
+      color:rgb(72, 87, 9)
+    }
+    p {
+      line-height: 1.2;
+      font-size: 25PX;
+      margin-left:300px;
+      margin-top: 20px;
+     
+    }
+    input{
+      margin-left:300px;
+      margin-top: 15Px;
+      
+      
+    }
+    button{
+      margin-left: 300px;
+    }
+    </style>
+    <h1>CLUE:4</h1>
+    <p>Solve puzzle 6,n,9,6,12,8</p>
+    <p>It has n minarets,built for symbol of love and to eliminate plague </p>
+    <form id="quiz-form">
+        <input type="radio" name="answer" value="Taj">TAJ MAHAL<br>
+        <input type="radio" name="answer" value="jama">JAMA MASJID<br>
+        <input type="radio" name="answer" value="charminar">CHARMINAR<br>
+        <input type="radio" name="answer" value="Red fort">RED FORT<br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <p id="result"></p>
+    <button id="hint-button" style="display: none;">Hint</button>
+    <p id="hint"></p>
+
+    <script>
+        let attempts = 0;
+        document.getElementById("quiz-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let answer = document.querySelector('input[name="answer"]:checked').value;
+            if (answer === "charminar") {
+                 document.getElementById("result").innerHTML = "Correct answer!";
+                // navigate to next page
+                setTimeout(function() {
+            window.location.href = 'clue5.html';
+          }, 1000);
+            } else {
+                attempts++;
+                document.getElementById("result").innerHTML = "Wrong answer!";
+                if (attempts === 1) {
+                    document.getElementById("hint-button").style.display = "block";
+                } else {
+                    document.getElementById("hint").innerHTML = "";
+                    // navigate to next page
+                    setTimeout(function() {
+            window.location.href = 'finalpage2.html';
+          }, 1000);
+                }
+            }
+        });
+        document.getElementById("hint-button").addEventListener("click", function() {
+            document.getElementById("hint").innerHTML = "It is built by Sultan MOhammed Quli Qutub Shah";
+            document.getElementById("hint-button").disabled = true;
+        });
+    </script>
+</body>
+</html>
